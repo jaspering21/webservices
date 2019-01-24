@@ -5,8 +5,18 @@ from rest_framework import status
 from .models import Stock
 from .serializers import StockSerializer
 from django.http import HttpResponse
+from django.shortcuts import render, HttpResponse
 
-class StockList(APIView):
+def homepage(request):
+    #return HttpResponse('Home Page')
+    return render(request, 'companies/ticker.html')
+
+
+'''class StockList(APIView):
+
+    def homepage(request):
+        return HttpResponse('Home Page')
+        #return render(request, 'companies/ticker.html')
 
     def get (self, request):
         stocks = Stock.objects.all()
@@ -15,3 +25,4 @@ class StockList(APIView):
 
     def post(self):
         pass
+'''
