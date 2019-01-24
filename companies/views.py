@@ -9,8 +9,9 @@ from django.shortcuts import render, HttpResponse
 
 def homepage(request):
     #return HttpResponse('Home Page')
+    if request.method == 'POST':
+        print(request.POST)
     return render(request, 'companies/ticker.html')
-
 
 '''class StockList(APIView):
 
