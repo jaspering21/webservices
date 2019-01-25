@@ -12,13 +12,10 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 from django.core.wsgi import get_wsgi_application
-from whitenoise.django import DjangoWhiteNoise
 
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "webservices.settings")
 
-application = get_wsgi_application()
-application = DjangoWhiteNoise(application)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -131,11 +128,3 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-
-SECRET_KEY = config('SECRET_KEY')
-DEBUG = config('DEBUG', default=False, cast=bool)
-DATABASES = {
-    'default': dj_database_url.config(
-        default=config('DATABASE_URL')
-    )
-}
